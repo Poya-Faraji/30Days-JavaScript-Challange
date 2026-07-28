@@ -27,6 +27,8 @@ body {
   gap: 1rem;
   text-align: center;
   .key {
+    transition: all 0.7s;
+
     aspect-ratio: 1/1;
     border: 2px solid black;
     padding: 1rem;
@@ -46,7 +48,6 @@ body {
 .key.playing {
   border-radius: 0.5rem;
   border-color: orange;
-  transition: all 0.7s;
   scale: 1.1;
   background-color: hsl(0, 0%, 0%, 80%);
 }
