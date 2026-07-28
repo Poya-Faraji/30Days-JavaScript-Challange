@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Digital";
+  src: url("../src/assets/fonts/digital.ttf") format("truetype");
+}
+
 body {
   min-block-size: 100vh;
   background: #ae9481;
@@ -10,7 +15,10 @@ body {
   );
 
   display: grid;
+  align-content: start;
   justify-content: center;
+
+  gap: 3rem;
 
   .clock {
     margin-block-start: 4rem;
@@ -63,8 +71,12 @@ body {
     }
   }
 
-  h1 { 
+  h1 {
+    color: white;
     text-align: center;
-    font-family: sans-serif;
+    font-family: "Digital", system-ui;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 4px 6px 0 black;
   }
 }
