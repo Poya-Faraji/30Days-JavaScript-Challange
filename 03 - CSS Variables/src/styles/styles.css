@@ -1,3 +1,9 @@
+:root {
+  --base: #ffc600;
+  --spacing: 10px;
+  --blur: 1px;
+}
+
 body {
   text-align: center;
   background: #193549;
@@ -6,10 +12,19 @@ body {
   font-weight: 100;
   font-size: 50px;
 
+  .hl {
+    color: var(--base);
+  }
   .controls {
     margin-bottom: 50px;
     input {
       width: 100px;
     }
+  }
+
+  img {
+    padding: var(--spacing);
+    background-color: var(--base);
+    filter: blur(var(--blur));
   }
 }
