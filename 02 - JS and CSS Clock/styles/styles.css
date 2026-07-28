@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Digital";
+  src: url("../src/assets/fonts/digital.ttf") format("truetype");
+}
+
+body {
+  min-block-size: 100vh;
+  background: #ae9481;
+  background: radial-gradient(
+    circle,
+    rgba(174, 148, 129, 1) 1%,
+    rgba(156, 137, 128, 1) 55%,
+    rgba(145, 112, 107, 1) 95%,
+    rgba(102, 84, 95, 1) 100%
+  );
+
+  display: grid;
+  align-content: start;
+  justify-content: center;
+
+  gap: 3rem;
+
+  .clock {
+    margin-block-start: 4rem;
+    inline-size: 15rem;
+    block-size: 15rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 0%, 40%);
+
+    position: relative;
+    > * {
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition-timing-function: cubic-bezier(0, 3.19, 0.58, 1);
+      transition-duration: 0.06s;
+      transition-property: all;
+      position: absolute;
+      right: 50%;
+      top: 50%;
+      border-radius: 9999rem;
+    }
+
+    .hour-hand {
+      z-index: 500;
+      inline-size: 25%;
+      block-size: 6px;
+      background-color: white;
+    }
+    .second-hand {
+      z-index: 200;
+      inline-size: 45%;
+      block-size: 4px;
+      background-color: hsl(0, 100%, 50%, 80%);
+    }
+    .minute-hand {
+      z-index: 300;
+      inline-size: 38%;
+      block-size: 6px;
+      background-color: white;
+    }
+
+    .middle-circle {
+      z-index: 800;
+      block-size: 0.8rem;
+      inline-size: 0.8rem;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+    }
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+    font-family: "Digital", system-ui;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 4px 6px 0 black;
+  }
+}
