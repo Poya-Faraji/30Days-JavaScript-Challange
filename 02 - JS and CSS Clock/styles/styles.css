@@ -1,0 +1,52 @@
+body {
+  min-block-size: 100vh;
+  background: #ae9481;
+  background: radial-gradient(
+    circle,
+    rgba(174, 148, 129, 1) 1%,
+    rgba(156, 137, 128, 1) 55%,
+    rgba(145, 112, 107, 1) 95%,
+    rgba(102, 84, 95, 1) 100%
+  );
+
+  display: grid;
+  justify-content: center;
+
+  .clock {
+    margin-block-start: 4rem;
+    inline-size: 15rem;
+    block-size: 15rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 0%, 40%);
+
+    position: relative;
+    > * {
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition-timing-function: cubic-bezier(0, 3.19, 0.58, 1);
+      transition-duration: 0.06s;
+      transition-property: all;
+      position: absolute;
+      right: 50%;
+      top: 50%;
+      border-radius: 9999rem;
+    }
+
+    .hour-hand {
+      inline-size: 38%;
+      block-size: 6px;
+      background-color: white;
+    }
+    .second-hand {
+      inline-size: 50%;
+      block-size: 4px;
+      background-color: hsl(0, 100%, 50%, 80%);
+    }
+    .minute-hand {
+      inline-size: 45%;
+      block-size: 6px;
+      background-color: white;
+    }
+  }
+}
