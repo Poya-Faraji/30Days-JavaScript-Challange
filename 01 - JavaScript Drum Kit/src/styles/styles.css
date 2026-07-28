@@ -1,0 +1,53 @@
+html {
+  font-family: "Metal Mania", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  background-image: url("../assets/images/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-block-size: 100vh;
+  backdrop-filter: blur(2px);
+  display: grid;
+  align-content: center;
+}
+
+.drum-wrapper {
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+  @media (width < 720px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  gap: 1rem;
+  text-align: center;
+  .key {
+    transition: all 0.7s;
+
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    padding: 1rem;
+    background-color: hsl(0, 0%, 0%, 50%);
+    .content {
+      p:nth-child(1) {
+        color: white;
+        font-size: 2rem;
+      }
+      p:nth-child(2) {
+        color: orange;
+      }
+    }
+  }
+}
+
+.key.playing {
+  border-radius: 0.5rem;
+  border-color: orange;
+  scale: 1.1;
+  background-color: hsl(0, 0%, 0%, 80%);
+}
