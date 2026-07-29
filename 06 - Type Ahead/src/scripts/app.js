@@ -24,6 +24,7 @@ async function loadCities() {
   }
 }
 
+// Adds \. before every character to avoid break
 function escapeRegex(text) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
