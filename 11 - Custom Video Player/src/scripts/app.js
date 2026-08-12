@@ -48,7 +48,7 @@ function scrub(e) {
   video.currentTime = scrubTime;
 }
 
-const mousedown = false;
+let mousedown = false;
 
 progress.addEventListener("click", scrub);
 progress.addEventListener("mousemove", (e) => mousedown && scrub(e));
