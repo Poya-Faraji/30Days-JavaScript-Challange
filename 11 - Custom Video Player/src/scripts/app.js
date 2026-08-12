@@ -63,3 +63,23 @@ function handleProgressBar() {
 ranges.forEach((range) => {
   range.addEventListener("change", handleRangeUpdate);
 });
+
+// handle video full screen
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    video.requestFullscreen();
+  } else {
+    document.exitFullscreen?.();
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  const key = e.key.toLowerCase();
+
+  if (key === "enter" || key === "f") {
+    toggleFullScreen();
+  }
+  if (key === " ") {
+    togglePlay();
+  }
+});
