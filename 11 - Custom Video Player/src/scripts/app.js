@@ -36,7 +36,12 @@ skipButtons.forEach((button) => {
   button.addEventListener("click", skip);
 });
 
-function handleRangeUpdate() {}
+function handleRangeUpdate() {
+  const name = this.name;
+  const value = parseFloat(this.value);
+
+  video[name] = value;
+}
 
 function scrub(e) {
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
