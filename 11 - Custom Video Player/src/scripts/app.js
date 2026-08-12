@@ -25,3 +25,12 @@ video.addEventListener("click", togglePlay);
 // handle button update based on pause
 video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
+
+function skip() {
+  const skipTime = parseFloat(this.dataset.skip);
+  video.currentTime += skipTime;
+}
+
+skipButtons.forEach((button) => {
+  button.addEventListener("click", skip);
+});
