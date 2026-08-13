@@ -15,25 +15,26 @@
 
 */
 
-var cornify_count = 0;
-var cornify_add = function (options) {
+let cornify_count = 0;
+const cornify_add = function (options) {
   // Track how often we cornified.
   cornify_count += 1;
 
   // Prepare our lovely variables.
-  var cornify_url = "https://www.cornify.com/";
-  var numType = "px";
-  var heightRandom = Math.random() * 0.75;
-  var windowHeight = 768;
-  var windowWidth = 1024;
-  var height = 0;
-  var width = 0;
-  var de = document.documentElement;
-  var transform = "translate(-50%, -50%)";
-  var showGrandUnicorn = cornify_count == 15;
+  let numType = "px";
+  let windowHeight = 768;
+  let windowWidth = 1024;
+  let height = 0;
+  let width = 0;
+  let transform = "translate(-50%, -50%)";
+
+  const cornify_url = "https://www.cornify.com/";
+  const de = document.documentElement;
+  const heightRandom = Math.random() * 0.75;
+  const showGrandUnicorn = cornify_count == 15;
 
   // Create a container for our 'corn or 'bow.
-  var div = document.createElement("div");
+  const div = document.createElement("div");
   div.style.position = "fixed";
   div.className = "__cornify_unicorn";
   div.style.zIndex = 143143;
@@ -66,7 +67,7 @@ var cornify_add = function (options) {
   }
 
   // Create the image element.
-  var img = document.createElement("img");
+  const img = document.createElement("img");
   img.style.opacity = 0;
   img.style.transition = "all .1s linear";
   img.alt = "A lovely unicorn or rainbow";
@@ -75,8 +76,8 @@ var cornify_add = function (options) {
   };
 
   // Used as a cache buster so the browser makes a new request every time instead of usign the previous, cached one.
-  var currentTime = new Date();
-  var submitTime = currentTime.getTime();
+  const currentTime = new Date();
+  let submitTime = currentTime.getTime();
 
   if (showGrandUnicorn) {
     // Caching doesn't matter for the Grand Unicorn.
@@ -84,7 +85,7 @@ var cornify_add = function (options) {
   }
 
   // Construct our unicorn & rainbow request.
-  var url = `https://www.cornify.com/corns/${
+  const url = `https://www.cornify.com/corns/${
     Math.random() > 0.5 ? "r" : "u"
   }${Math.ceil(Math.random() * 7)}.gif`;
 
@@ -110,25 +111,25 @@ var cornify_add = function (options) {
   img.style.transition = "all .1s linear";
 
   div.onmouseover = function () {
-    var size = 1 + Math.round(Math.random() * 10) / 100;
-    var angle = Math.round(Math.random() * 20 - 10);
-    var result = "rotate(" + angle + "deg) scale(" + size + "," + size + ")";
+    let size = 1 + Math.round(Math.random() * 10) / 100;
+    let angle = Math.round(Math.random() * 20 - 10);
+    let result = "rotate(" + angle + "deg) scale(" + size + "," + size + ")";
     img.style.transform = result;
     img.style.MozTransform = result;
     img.style.webkitTransform = result;
   };
 
   div.onmouseout = function () {
-    var size = 0.9 + Math.round(Math.random() * 10) / 100;
-    var angle = Math.round(Math.random() * 6 - 3);
-    var result = "rotate(" + angle + "deg) scale(" + size + "," + size + ")";
+    let size = 0.9 + Math.round(Math.random() * 10) / 100;
+    let angle = Math.round(Math.random() * 6 - 3);
+    let result = "rotate(" + angle + "deg) scale(" + size + "," + size + ")";
     img.style.transform = result;
     img.style.MozTransform = result;
     img.style.webkitTransform = result;
   };
 
   // Append our container DIV to the page.
-  var body = document.getElementsByTagName("body")[0];
+  const body = document.getElementsByTagName("body")[0];
   body.appendChild(div);
   div.appendChild(img);
 
@@ -136,11 +137,11 @@ var cornify_add = function (options) {
 
   // When clicking 5 times, add a custom stylesheet to make the page look awesome.
   if (cornify_count == 5) {
-    var cssExisting = document.getElementById("__cornify_css");
+    let cssExisting = document.getElementById("__cornify_css");
 
     if (!cssExisting) {
-      var head = document.getElementsByTagName("head")[0];
-      var css = document.createElement("link");
+      let head = document.getElementsByTagName("head")[0];
+      let css = document.createElement("link");
       css.id = "__cornify_css";
       css.type = "text/css";
       css.rel = "stylesheet";
@@ -154,17 +155,17 @@ var cornify_add = function (options) {
   cornify_updatecount();
 
   // Trigger an event on the document.
-  var event = new Event("cornify");
+  let event = new Event("cornify");
   document.dispatchEvent(event);
 };
 
 // Tracks how often we cornified.
-var cornify_updatecount = function () {
-  var id = "__cornify_count";
-  var p = document.getElementById(id);
+const cornify_updatecount = function () {
+  const id = "__cornify_count";
+  const p = document.getElementById(id);
 
   if (p == null) {
-    var p = document.createElement("p");
+    let p = document.createElement("p");
     p.id = id;
     p.style.position = "fixed";
     p.style.bottom = "5px";
@@ -176,8 +177,12 @@ var cornify_updatecount = function () {
     p.style.fontSize = "24px";
     p.style.fontFamily = "'Comic Sans MS', 'Comic Sans', 'Marker Felt', serif"; // Only the best!
     p.style.textTransform = "uppercase";
-    var body = document.getElementsByTagName("body")[0];
+    const body = document.getElementsByTagName("body")[0];
     body.appendChild(p);
+  }
+
+  if (p === null) {
+    return;
   }
 
   if (cornify_count == 1) {
@@ -190,18 +195,18 @@ var cornify_updatecount = function () {
   cornify_setcookie("cornify", cornify_count + "", 1000);
 };
 
-var cornify_setcookie = function (name, value, days) {
-  var d = new Date();
+const cornify_setcookie = function (name, value, days) {
+  const d = new Date();
   d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toGMTString();
+  const expires = "expires=" + d.toGMTString();
   document.cookie = name + "=" + value + "; " + expires;
 };
 
-var cornify_getcookie = function (cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i].trim();
+const cornify_getcookie = function (cname) {
+  const name = cname + "=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
     if (c.indexOf(name) == 0) {
       return c.substring(name.length, c.length);
     }
@@ -216,13 +221,13 @@ if (isNaN(cornify_count)) {
 }
 
 // Adds happy words at the beginning of all headers on the page.
-var cornify_replace = function () {
+let cornify_replace = function () {
   // Replace text.
-  var hc = 6;
-  var hs;
-  var h;
-  var k;
-  var words = [
+  const hc = 6;
+  let hs;
+  let h;
+  let k;
+  const words = [
     "Happy",
     "Sparkly",
     "Glittery",
@@ -246,12 +251,12 @@ var cornify_replace = function () {
 };
 
 // Adds happy words at the beginning of all headers on the page.
-var cornify_replace = function () {
-  var headerTypeIndex = 6;
-  var headerElements;
-  var headerElement;
-  var i;
-  var magicalWords = [
+cornify_replace = function () {
+  let headerTypeIndex = 6;
+  let headerElements;
+  let headerElement;
+  let i;
+  const magicalWords = [
     "Happy",
     "Sparkly",
     "Glittery",
@@ -281,37 +286,37 @@ var cornify_replace = function () {
 
 // Clicking the rainbow cupcake button makes all the unicorns
 // disappear (should only be used in an emergency, since it's sad).
-var cornify_click_cupcake_button = function () {
-  var doc = document;
+const cornify_click_cupcake_button = function () {
+  const doc = document;
 
-  var corns = doc.getElementsByClassName("__cornify_unicorn");
+  let corns = doc.getElementsByClassName("__cornify_unicorn");
   if (corns) {
-    for (var i = 0; i < corns.length; i++) {
+    for (let i = 0; i < corns.length; i++) {
       corns[i].parentNode.removeChild(corns[i]);
     }
   }
 
   // Remove our counter.
-  var button = doc.getElementById("__cornify_count");
+  let button = doc.getElementById("__cornify_count");
   if (button) {
     button.parentNode.removeChild(button);
   }
 
   // Remove the cupcake button.
-  var button = doc.getElementById("__cornify_cupcake_button");
+  button = doc.getElementById("__cornify_cupcake_button");
   if (button) {
     button.parentNode.removeChild(button);
   }
 
-  var event = new Event("cornify-clear");
+  let event = new Event("cornify-clear");
   document.dispatchEvent(event);
 };
 
 // Add the rainbow cupcake button to the page.
-var cornify_add_cupcake_button = function () {
-  var id = "__cornify_cupcake_button";
-  var doc = document;
-  var button = doc.getElementById(id);
+const cornify_add_cupcake_button = function () {
+  const id = "__cornify_cupcake_button";
+  const doc = document;
+  let button = doc.getElementById(id);
 
   if (!button) {
     button = doc.createElement("div");
@@ -323,7 +328,7 @@ var cornify_add_cupcake_button = function () {
     button.style.zIndex = 2147483640;
     button.setAttribute("aria-label", "Hide unicorns and rainbows");
 
-    var image = document.createElement("img");
+    let image = document.createElement("img");
     image.src = "https://www.cornify.com/assets/cornify-cupcake-button.png";
     image.alt = "Cupcake button";
     image.width = 50;
@@ -341,7 +346,7 @@ var cornify_add_cupcake_button = function () {
 };
 
 // Adapted from http://www.snaptortoise.com/konami-js/
-var cornami = {
+const cornami = {
   input: "",
   pattern: "38384040373937396665",
   clear: setTimeout("cornami.clear_input()", 5000),
@@ -367,4 +372,4 @@ var cornami = {
   },
 };
 
-cornami.load();
+export { cornify_add, cornami };
